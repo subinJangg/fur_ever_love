@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fur_ever_love/settings/landing_page.dart';
+import 'package:fur_ever_love/login/fel_login.dart';
+import 'package:fur_ever_love/mainpages/main_home.dart';
 // import 'package:fur_ever_love/mainpages/main_home.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() { // 앱 실행
   runApp(MyApp());
