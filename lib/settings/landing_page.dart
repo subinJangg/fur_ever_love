@@ -19,7 +19,11 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
 
-  Future<bool> checkLogin() async {
+  // Future : 비동기 작업시 사용, 일정 소요 시간 소요 후 실제 데이터 or 에러 반환 ex) 주문서
+  //          async 클래스는 await 매서드 가짐
+  //           -> await로 선언된 메서드는 응답이 처리될 때까지 대기
+
+  Future<bool> checkLogin() async { // bool == boolean ( t or f 로 반환 )
     SharedPreferences prefs = await SharedPreferences.getInstance();
       bool isLogin = prefs.getBool('isLogin') ?? false;
       return isLogin;

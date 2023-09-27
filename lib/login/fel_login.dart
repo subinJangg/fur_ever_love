@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fur_ever_love/login/fel_findEmail.dart';
+import 'package:fur_ever_love/login/fel_findPass.dart';
 import 'package:fur_ever_love/login/fel_join.dart';
 import 'package:fur_ever_love/mainpages/main_home.dart';
 import 'package:get/get.dart';
@@ -42,10 +44,10 @@ class _LoginScreen extends State<LoginScreen> {
                 child: Theme(
                   data: ThemeData(
                     primaryColor: Colors.grey,
-                    inputDecorationTheme: InputDecorationTheme(
+                    inputDecorationTheme: InputDecorationTheme( // 입력 필드의 모양과 스타일을 일괄적으로 정의 하는 데 사용되는 테마(Theme) 속성
                       labelStyle: TextStyle(color: Colors.teal, fontSize: 15.0))),
                   child: Container(
-                    padding: EdgeInsets.all(40.0),
+                    padding: EdgeInsets.all(40.0), // EdgeInsets : 여백 설정
                     child: Builder(builder: (context) {
                       return Column(
                         children: [
@@ -65,9 +67,7 @@ class _LoginScreen extends State<LoginScreen> {
                             height: 40.0,
                           ),
                           ButtonTheme(
-                            minWidth: 600.0,
-                            height: 50.0,
-                            child: ElevatedButton(
+                            child: ElevatedButton( // 로그인 버튼
                               onPressed: () {
                                 if(user_email.text == 'mang@naver.com' && user_password.text == '123') {
                                   Get.offAll(MainHome());
@@ -80,28 +80,22 @@ class _LoginScreen extends State<LoginScreen> {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.orangeAccent
+                                backgroundColor: Colors.orangeAccent,
+                                minimumSize: Size(320.0, 30.0),
                               ),
                               child: Text(
                                 "Login"
                               )
-                            )),
-                            ButtonTheme(
-                              minWidth: 600.0,
-                              height: 50.0,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Get.to(JoinScreen());
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.grey
-                                ),
-                                child: Text(
-                                  "Join Fur Love"
-                                ),
-                              ),
-
-                            ),
+                            )
+                          ),
+                          SizedBox(height: 8.0),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 버튼 사이의 간격을 균등하게 배치
+                            children: [
+                              JoinBtn(),
+                              FindEmailBtn(),
+                              FindPassBtn(),
+                            ]),
                         ],
                       );
                     }),
@@ -116,6 +110,7 @@ class _LoginScreen extends State<LoginScreen> {
   }
 }
 
+// 스낵바 스타일
 void showSnackBar(BuildContext context, Text text) {
   final snackBar = SnackBar(
     content: text,
@@ -125,14 +120,70 @@ void showSnackBar(BuildContext context, Text text) {
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
 
-// class NextPage extends StatelessWidget {
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }
+// 회원가입 버튼
+class JoinBtn extends StatelessWidget {
 
+  @override
+  Widget build(BuildContext context) {
+    return ButtonTheme(
+      child: ElevatedButton(
+        onPressed: () {
+          Get.to(JoinScreen());
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.grey,
+          minimumSize: Size(100.0, 30.0),
+        ),
+        child: Text(
+            "Join Us"
+        ),
+      ),
+    );
+  }
+}
+//이메일 찾기 버튼
+class FindEmailBtn extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return ButtonTheme(
+      child: ElevatedButton(
+        onPressed: () {
+          Get.to(FindEmailScreen());
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.grey,
+          minimumSize: Size(100.0, 30.0),
+        ),
+        child: Text(
+            "Find Email"
+        ),
+      ),
+    );
+  }
+}
+
+//비밀번호 찾기 버튼
+class FindPassBtn extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return ButtonTheme(
+      child: ElevatedButton(
+        onPressed: () {
+          Get.to(FindPassScreen());
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.grey,
+          minimumSize: Size(100.0, 30.0),
+        ),
+        child: Text(
+            "Find Pass"
+        ),
+      ),
+    );
+  }
+}
 
 
 
